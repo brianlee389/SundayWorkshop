@@ -1,0 +1,63 @@
+h1 {
+    background-color: cornflowerblue;
+    box-shadow: 1px 1px 2px #111111;
+    margin: 0;
+    margin-bottom: 5px;
+}
+.labels {
+    float:left;
+    border: 1px solid #000;
+    padding: 10px;
+    height:534px;
+    width:60px;
+}
+body {
+    margin:0;
+    overflow: none;
+}
+
+#game {
+    float: left;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    background: url("http://www.zastavki.com/pictures/1920x1200/2009/Nature_Fields_Green_field_under_blue_sky_016242_.jpg");
+    background-size: cover; 
+    background-repeat: no-repeat;
+}
+
+.name {
+    color: azure;
+    text-shadow: 1px 1px 4px #000;
+}
+.title {
+}
+
+#y-label {
+    margin-bottom: 480px;
+}
+
+.controls {
+    float: left;
+    clear:left;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    padding: 25px;
+    width: 633px;
+    display:none;
+}
+
+#gamecontent {
+    position: relative;
+    overflow: none;
+}
+
+
+#help {
+    width: 400px;
+    margin-left: 90px;
+    margin-bottom: 480px;
+    font-size: 24px;
+    
+}
