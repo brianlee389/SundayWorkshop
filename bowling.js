@@ -1,7 +1,15 @@
 // Let's not touch this section
 var canvasElem = document.getElementById("game");
 var world = boxbox.createWorld(canvasElem);
-
+/*function rain_blocks (block, seconds) {
+    var secs = seconds*1000;
+    setInterval(function() {
+        world.createEntity(block, {
+          x: Math.floor((Math.random()*10)+1),
+          y: .01
+        });
+    }, secs);
+}*/
 /*
 var angleInput = $("#angle");
 var angleInputText = $("#angle-text");

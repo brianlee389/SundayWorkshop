@@ -2,17 +2,6 @@
 var canvasElem = document.getElementById("game");
 var boxworld = boxbox.createWorld(canvasElem);
 
-// Effects
-function rain_blocks (block, seconds) {
-    var secs = seconds*1000;
-    setInterval(function() {
-        world.createEntity(block, {
-          x: Math.floor((Math.random()*10)+1),
-          y: .01
-        });
-    }, secs);
-}
-
 // Look below this line, not above it
 var ground = {
       name: "ground",
@@ -59,6 +48,19 @@ var square = {
       }
     };
 
+var circle = {
+      name: "block",
+      shape: "circle",
+      radius: 1,
+      color: "pink",
+      width: 3,
+      height: 3,
+      onImpact: function(entity, force) {
+        if (entity.name() === "player") {
+          this.color("black");
+        }
+      }
+    };
 var flashysquare = {
     name: "block",
     shape: "square",
@@ -71,10 +73,10 @@ var flashysquare = {
         }
     },
     onTick: function() {
-        if(this.color() == "blue") {
-            this.color("green");
+        if(this.color() == "cyan") {
+            this.color("yellow");
         } else {
-            this.color("blue");
+            this.color("cyan");
         }
     }
 };
@@ -114,8 +116,8 @@ var player = {
     density: 4,
     x: 2,
     y:18,
-    width: 1,
-    height: 1,
+    width: 2,
+    height: 2,
     onKeyDown: function(e) {
         var kc = e.keyCode;
         if(kc == KEYCODES['space']) {
@@ -146,7 +148,7 @@ var player = {
 };
 
 
-// Start Game
+// START GAME
 //-------------------------------------------------
 var startGame = function(world) {
     world.createEntity(ground);
@@ -199,7 +201,22 @@ var startGame = function(world) {
         y: 15,
         color: "orange"
     });
+    world.createEntity(circle, {
+        x: 12,
+        y: 10
+    })
+    //----------------------------------
+    // ADD CODE HERE
     
+  
+    
+    
+    
+    world.createEntity(flashysquare, { x:4});
+    
+    
+    //----------------------------------
+    // DONT ADD CODE BELOW
     return world;
 }
 
