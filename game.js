@@ -2,17 +2,6 @@
 var canvasElem = document.getElementById("game");
 var boxworld = boxbox.createWorld(canvasElem);
 
-// Effects
-function rain_blocks (block, seconds) {
-    var secs = seconds*1000;
-    setInterval(function() {
-        world.createEntity(block, {
-          x: Math.floor((Math.random()*10)+1),
-          y: .01
-        });
-    }, secs);
-}
-
 // Look below this line, not above it
 var ground = {
       name: "ground",
@@ -59,6 +48,19 @@ var square = {
       }
     };
 
+var circle = {
+      name: "block",
+      shape: "circle",
+      radius: 1,
+      color: "pink",
+      width: 3,
+      height: 3,
+      onImpact: function(entity, force) {
+        if (entity.name() === "player") {
+          this.color("black");
+        }
+      }
+    };
 var flashysquare = {
     name: "block",
     shape: "square",
@@ -71,10 +73,11 @@ var flashysquare = {
         }
     },
     onTick: function() {
-        if(this.color() == "blue") {
-            this.color("green");
+        if(this.color() == "cyan") {
+            this.color("yellow");
         } else {
-            this.color("blue");
+            this.color("cyan");
+
         }
     }
 };
@@ -116,6 +119,7 @@ var player = {
     y:18,
     width: 1,
     height: 1,
+
     onKeyDown: function(e) {
         var kc = e.keyCode;
         if(kc == KEYCODES['space']) {
@@ -139,14 +143,11 @@ var player = {
         if(entity.name() == "block") {
 
         }
-        if(entity.name() == "ground" && force > 4) {
-            this.destr
-        }
     }
 };
 
 
-// Start Game
+// START GAME
 //-------------------------------------------------
 var startGame = function(world) {
     world.createEntity(ground);
@@ -187,7 +188,9 @@ var startGame = function(world) {
         color:"blue"
     });
     
-    
+
+    //----------------------------------
+    // ADD CODE HERE
     world.createEntity(rectangle, {
         x: 14,
         y: 17,
@@ -199,19 +202,21 @@ var startGame = function(world) {
         y: 15,
         color: "orange"
     });
+  
     
+    
+    
+    world.createEntity(flashysquare, { x:7});
+    
+    
+    //----------------------------------
+    // DONT ADD CODE BELOW
     return world;
-}
+};
 
 
 
 //----------------------------------------------------
 var game = startGame(boxworld);
-$("h1").on("click", function() {
-    var canvas = document.getElementById("game");
-    var context = canvas.getContext("2d");
-    context.clearRect(10, 10, 600, 540 );
-    console.log("s");
-//    startGame(boxworld);
-});
+
 

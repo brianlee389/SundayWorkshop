@@ -1,7 +1,19 @@
 // Let's not touch this section
 var canvasElem = document.getElementById("game");
 var world = boxbox.createWorld(canvasElem);
+<<<<<<< HEAD
 
+=======
+/*function rain_blocks (block, seconds) {
+    var secs = seconds*1000;
+    setInterval(function() {
+        world.createEntity(block, {
+          x: Math.floor((Math.random()*10)+1),
+          y: .01
+        });
+    }, secs);
+}*/
+>>>>>>> gh-pages
 /*
 var angleInput = $("#angle");
 var angleInputText = $("#angle-text");
@@ -151,5 +163,11 @@ function startGame() {
 }
 
 
-
+$("h1").on("click", function() {
+    var canvas = document.getElementById("game");
+    var context = canvas.getContext("2d");
+    context.clearRect(10, 10, 600, 540 );
+    console.log("s");
+//    startGame(boxworld);
+});
 startGame();
